@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -123,5 +125,66 @@ public class Query {
     } catch (SQLException e) {
         System.out.println("Error al eliminar el mueble: " + e.getMessage());
     }
+}
+    public List<Mueble> obtenerPrimeros4Muebles() {
+    String sql = "SELECT id_mueble, modelo, tipo, material, precio_venta, descripcion FROM mueble LIMIT 4";
+    List<Mueble> muebles = new ArrayList<>();
+
+    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+
+        while (rs.next()) {
+            int idMueble = rs.getInt("id_mueble");
+            String modelo = rs.getString("modelo");
+            String tipo = rs.getString("tipo");
+            String material = rs.getString("material");
+            Double precioVenta =rs.getDouble("precio_venta");
+            String PreciV=precioVenta.toString();
+            String descripcion = rs.getString("descripcion");
+
+            Mueble mueble = new Mueble(idMueble, modelo, tipo, material, PreciV, descripcion);
+            muebles.add(mueble);
+        }
+
+        System.out.println("Los primeros 4 muebles fueron obtenidos correctamente.");
+
+    } catch (SQLException e) {
+        System.out.println("Error al obtener los muebles: " + e.getMessage());
+    }
+
+    return muebles;
+}
+    public List<Mueble> obtenerSiguientes4Muebles(int offset) {
+    String sql = "SELECT id_mueble, modelo, tipo, material, precio_venta, descripcion FROM mueble LIMIT 4 OFFSET ?";
+    List<Mueble> muebles = new ArrayList<>();
+
+    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        
+        pstmt.setInt(1, offset);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                int idMueble = rs.getInt("id_mueble");
+                String modelo = rs.getString("modelo");
+                String tipo = rs.getString("tipo");
+                String material = rs.getString("material");
+                Double precioVenta =rs.getDouble("precio_venta");
+                String PreciV=precioVenta.toString();
+                String descripcion = rs.getString("descripcion");
+
+                Mueble mueble = new Mueble(idMueble, modelo, tipo, material, PreciV, descripcion);
+                muebles.add(mueble);
+            }
+        }
+
+        System.out.println("Los siguientes 4 muebles fueron obtenidos correctamente.");
+
+    } catch (SQLException e) {
+        System.out.println("Error al obtener los muebles: " + e.getMessage());
+    }
+
+    return muebles;
 }
 }

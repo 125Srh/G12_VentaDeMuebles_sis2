@@ -1,6 +1,10 @@
 
 package Ventanas;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author ECTOR
@@ -8,7 +12,7 @@ package Ventanas;
 public class Principal extends javax.swing.JFrame {
             private    Mueble persona = new Mueble();
             Query query=new Query();
-
+            
 
     /**
      * Creates new form Principal
@@ -16,6 +20,16 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.jTable1=query.cargarDatosEnTabla(jTable1);
+                addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Al cerrar este frame, invocar el nuevo frame
+                SIS_INF_2 sec = new SIS_INF_2();
+                sec.setVisible(true);
+            }
+        });
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
