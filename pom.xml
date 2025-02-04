@@ -10,4 +10,12 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>com.mycompany.g12_ventademuebles_sis2.G12_ventaDeMuebles_sis2</exec.mainClass>
     </properties>
+    
+    <dependencies>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.5</version>
+            </dependency>
+    </dependencies>
 </project>
