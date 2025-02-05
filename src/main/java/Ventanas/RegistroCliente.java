@@ -350,17 +350,18 @@ public class RegistroCliente extends javax.swing.JFrame {
         String nombre = TextFieldNombre.getText();
         String password = PasswordFieldContraseña.getText();
         String correo = TextFieldCorreo.getText();
-
-        if ((nombre.isEmpty() || password.isEmpty()) || correo.isEmpty()) {
+        if (nombre.isEmpty() || password.isEmpty() || correo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los datos.");
+        } else {
+            if (PasswordFieldContraseñaConf.getText().equals(PasswordFieldContraseña.getText())) {
+                Query query = new Query();
+                query.agregarUsuario(nombre, correo, password);
+                query.mostrarMensaje("Usuario: "+ nombre+" registrado");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+            }
         }
-        if(PasswordFieldContraseñaConf.getText().equals(PasswordFieldContraseña.getText())){
-            Cuenta log = new Cuenta();
-            log.setVisible(true);
-            //inserte método para añadir datos a la BD
-            this.dispose();
-        }
-
     }//GEN-LAST:event_btnRegistrarseMouseClicked
 
     private void btnRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseEntered
@@ -368,9 +369,6 @@ public class RegistroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarseMouseEntered
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        Cuenta log = new Cuenta();
-        log.setVisible(true);
-
         this.dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
 
