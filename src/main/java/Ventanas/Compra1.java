@@ -34,7 +34,7 @@ public class Compra1 extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 public Image SettearIcono(String tipo, int x, int y) {
-    String rutaBase = "src\\main\\java\\Imagen\\";
+    String rutaBase = "\\Imagen\\";
     String rutaImagen = null; // Cambiamos la inicialización a null
     Image image = null; // Inicializamos la variable image
     switch (tipo.toLowerCase()) {

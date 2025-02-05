@@ -28,17 +28,12 @@ public class llenarM extends javax.swing.JFrame {
     public llenarM() {
         initComponents();
         setTitle("Muebleria Sanchez");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // No cierra la aplicación
         this.setLocationRelativeTo(null);
-        this.jLabel3.setBackground(new java.awt.Color(0, 204, 204));
-        this.jLabel4.setBackground(new java.awt.Color(0, 204, 204));
-        this.jLabel5.setBackground(new java.awt.Color(0, 204, 204));
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // No cierra la aplicación
         this.jPanel3.setVisible(false);
-        this.jLabel6.setVisible(false);
-        
-        
+        this.jLabel6.setVisible(false); 
         try {
-        ImageIcon icon = new ImageIcon("src\\main\\java\\Imagen\\Designer (2).jpeg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/Designer (2).jpeg"));
         if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
           Image image = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Escalar imagen
           this.setIconImage(image); // Establecer imagen como icono de la ventana
@@ -84,7 +79,7 @@ public class llenarM extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ImageIcon icon = new ImageIcon("src\\main\\java\\Imagen\\Designer (1).jpeg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/Designer (1).jpeg"));
         Image image = icon.getImage().getScaledInstance(170, 130, java.awt.Image.SCALE_SMOOTH);
         jLabel2.setIcon(new ImageIcon(image));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 170, 160));
@@ -341,27 +336,36 @@ public class llenarM extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Query query= new Query();
-        NuevoM.setID_Mueble(query.codMax()+1);
-        NuevoM.setMaterial((String) jTextField2.getText());
-        NuevoM.setModelo((String) jTextField1.getText());
-        NuevoM.setDescripcion((String) jTextPane1.getText());
-        NuevoM.setTipo((String) ComboMueble.getSelectedItem());        
-        String precioVentaTexto = jTextField3.getText();
+        Query query = new Query();
+        NuevoM.setID_Mueble(query.codMax() + 1);
+        // Verificación de campos obligatorios
+        String material = jTextField2.getText().trim();
+        String modelo = jTextField1.getText().trim();
+        String descripcion = jTextPane1.getText().trim();
+        String tipo = (String) ComboMueble.getSelectedItem();
+        String precioVentaTexto = jTextField3.getText().trim();
+
+        if (material.isEmpty() || modelo.isEmpty() || descripcion.isEmpty() || tipo.isEmpty() || precioVentaTexto.isEmpty()) {
+            query.mostrarMensaje("Por favor, llena todos los campos.");
+            return;
+        }
+        NuevoM.setMaterial(material);
+        NuevoM.setModelo(modelo);
+        NuevoM.setDescripcion(descripcion);
+        NuevoM.setTipo(tipo);
         try {
-           double precioVenta = Double.parseDouble(precioVentaTexto);
-           NuevoM.setPrecio_Venta(precioVentaTexto);
-         } catch (NumberFormatException e) {
-           query.mostrarMensaje("El precio de venta debe ser un número.");
+            double precioVenta = Double.parseDouble(precioVentaTexto);
+            NuevoM.setPrecio_Venta(precioVentaTexto);
+        } catch (NumberFormatException e) {
+            query.mostrarMensaje("El precio de venta debe ser un número.");
             return;
         }        
-        if(!NuevoM.VacioAlgo(NuevoM)){
-        query.agregarMueble(NuevoM);
-        query.mostrarMensaje("Mueble guardado");
-        Borrar();
-        }else{
-        query.mostrarMensaje("No se guardo por datos mal detallados");
+        if (!NuevoM.VacioAlgo(NuevoM)) {
+            query.agregarMueble(NuevoM);
+            query.mostrarMensaje("Mueble guardado");
+            Borrar();
+        } else {
+            query.mostrarMensaje("No se guardó por datos mal detallados");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
