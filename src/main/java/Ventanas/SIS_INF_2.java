@@ -1735,6 +1735,7 @@ public void setLabelText(JLabel label, String text) {
             cpc.lblMaterialtxt.setText(this.lblMaterialtxt.getText());
             cpc.lblTipotxt.setText(this.lblTipotxt.getText());
             cpc.lblDescripciontxt.setText(this.lblDescripciontxt.getText());
+            cpc.lblPreciotxt.setText(this.lblPreciotxt.getText());
             /*SettearIcono escala la imagen de un icono para cpc*/
             cpc.lblImagen.setIcon(new ImageIcon(cpc.SettearIcono(this.ListaMue.get(0).getTipo(), 241, 246)));
             cpc.lblImagen.setHorizontalAlignment(JLabel.CENTER); // Centra el icono horizontalmente
@@ -1822,6 +1823,7 @@ public void setLabelText(JLabel label, String text) {
             cpc.lblMaterialtxt.setText(this.lblMaterialtxt1.getText());
             cpc.lblTipotxt.setText(this.lblTipotxt1.getText());
             cpc.lblDescripciontxt.setText(this.lblDescripciontxt1.getText());
+            cpc.lblPreciotxt.setText(this.lblPreciotxt1.getText());
             cpc.lblImagen.setIcon(new ImageIcon(cpc.SettearIcono(this.ListaMue.get(1).getTipo(), 241, 246)));
             cpc.lblImagen.setHorizontalAlignment(JLabel.CENTER); // Centra el icono horizontalmente
             cpc.lblImagen.setVerticalAlignment(JLabel.CENTER);
@@ -1841,6 +1843,7 @@ public void setLabelText(JLabel label, String text) {
             cpc.lblMaterialtxt.setText(this.lblMaterialtxt2.getText());
             cpc.lblTipotxt.setText(this.lblTipotxt2.getText());
             cpc.lblDescripciontxt.setText(this.lblDescripciontxt2.getText());
+            cpc.lblPreciotxt.setText(this.lblPreciotxt2.getText());
             cpc.lblImagen.setIcon(new ImageIcon(cpc.SettearIcono(this.ListaMue.get(2).getTipo(), 241, 246)));
             cpc.lblImagen.setHorizontalAlignment(JLabel.CENTER); // Centra el icono horizontalmente
             cpc.lblImagen.setVerticalAlignment(JLabel.CENTER);
@@ -1859,6 +1862,7 @@ public void setLabelText(JLabel label, String text) {
             cpc.lblMaterialtxt.setText(this.lblMaterialtxt3.getText());
             cpc.lblTipotxt.setText(this.lblTipotxt3.getText());
             cpc.lblDescripciontxt.setText(this.lblDescripciontxt3.getText());
+            cpc.lblPreciotxt.setText(this.lblPreciotxt3.getText());
             cpc.lblImagen.setIcon(new ImageIcon(cpc.SettearIcono(this.ListaMue.get(3).getTipo(), 241, 246)));
             cpc.lblImagen.setHorizontalAlignment(JLabel.CENTER); // Centra el icono horizontalmente
             cpc.lblImagen.setVerticalAlignment(JLabel.CENTER);

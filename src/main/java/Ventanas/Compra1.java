@@ -34,7 +34,7 @@ public class Compra1 extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 public Image SettearIcono(String tipo, int x, int y) {
-    String rutaBase = "\\Imagen\\";
+    String rutaBase = "/Imagenes/";
     String rutaImagen = null; // Cambiamos la inicialización a null
     Image image = null; // Inicializamos la variable image
     switch (tipo.toLowerCase()) {
@@ -71,7 +71,7 @@ public Image SettearIcono(String tipo, int x, int y) {
     }
     // Ajustar el tamaño de la imagen y retornar la imagen escalada
     try {
-        ImageIcon icon = new ImageIcon(rutaImagen);
+        ImageIcon icon = new ImageIcon( getClass().getResource(rutaImagen));
         image = icon.getImage().getScaledInstance(x, y, Image.SCALE_SMOOTH); // Escalar imagen
         if (image == null) {
             System.out.println("La imagen no se encontró o no se pudo cargar.");
