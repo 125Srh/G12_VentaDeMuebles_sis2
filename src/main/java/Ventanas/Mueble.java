@@ -22,6 +22,14 @@ public class Mueble {
     Precio_Venta="";
     Descripcion="";
     }
+    public Mueble(int ID, String modelo,String tipo, String Material,String precio,String Descripcion){
+    ID_Mueble=ID;
+    Tipo=tipo;
+    Modelo=modelo;
+    this.Material=Material;
+    Precio_Venta=precio;
+    this.Descripcion=Descripcion;
+    }
     public boolean VacioAlgo(Mueble mueble){
     boolean res=false;
     if((mueble.ID_Mueble==0) &&((mueble.Tipo="").equals(""))&&

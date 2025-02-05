@@ -107,7 +107,7 @@ public class llenarM extends javax.swing.JFrame {
         ComboMueble.setBackground(new java.awt.Color(0, 153, 153));
         ComboMueble.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         ComboMueble.setForeground(new java.awt.Color(0, 51, 51));
-        ComboMueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ropero", "Cama", "Escritorio", "Comedor" }));
+        ComboMueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ropero", "Cama", "Escritorio", "Comedor", "Silla", "Sofa", "Sillon", "Estante" }));
         ComboMueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboMuebleActionPerformed(evt);
