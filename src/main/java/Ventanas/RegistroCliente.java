@@ -31,7 +31,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null); // Centrar la ventana
         setVisible(true);
          this.setLocationRelativeTo(this);
-        this.pintarImagen(this.lblImagen, "src/main/java/com/imagenes/polar.png");
+        this.pintarImagen(this.lblImagen, "/imagenes/polar.png");
     }
     public boolean isEmail(String correo){
         Pattern pat = null;
@@ -416,7 +416,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         });
     }
     private void pintarImagen(JLabel lbl, String ruta){
-        this.imagen = new ImageIcon(ruta);
+        this.imagen = new ImageIcon(getClass().getResource(ruta));
         this.icono = new ImageIcon(
                 this.imagen.getImage().getScaledInstance(
                         lbl.getWidth(),

@@ -49,7 +49,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(&quot;src\\main\\java\\Imagen\\Designer (1).jpeg&quot;);&#xa;Image image = icon.getImage().getScaledInstance(170, 130, java.awt.Image.SCALE_SMOOTH);&#xa;jLabel2.setIcon(new ImageIcon(image));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/Imagenes/Designer (1).jpeg&quot;));&#xa;Image image = icon.getImage().getScaledInstance(170, 130, java.awt.Image.SCALE_SMOOTH);&#xa;jLabel2.setIcon(new ImageIcon(image));"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

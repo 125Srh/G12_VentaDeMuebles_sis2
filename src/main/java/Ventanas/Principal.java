@@ -4,6 +4,7 @@ package Ventanas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,10 +199,15 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+    // TODO add your handling code here:
+    try {
         llenarM mueblesFrame = new llenarM();
         // Hacer visible el JFrame de Muebles
         mueblesFrame.setVisible(true);
+       
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al abrir el nuevo formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

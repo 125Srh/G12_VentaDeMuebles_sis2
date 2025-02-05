@@ -8,6 +8,7 @@ import java.util.List;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MediaTracker;
+import java.net.URL;
 import java.util.Locale;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -30,8 +31,8 @@ public class SIS_INF_2 extends javax.swing.JFrame {
     public SIS_INF_2() {
         initComponents();
         this.setLocationRelativeTo(this);
-        this.pintarImagen(this.lblImagenUser, "src/main/java/Imagen/user1.jpg");
-        this.pintarImagen(this.lblImagenPolr, "src/main/java/Imagen/polar.png");
+        this.pintarImagen(this.lblImagenUser, "/Imagenes/user1.jpg");
+        this.pintarImagen(this.lblImagenPolr, "/Imagenes/polar.png");
         ListaMue=query.obtenerSiguientes4Muebles(index);
         LLenarPanles();
         jTabbedPane2.setUI(null); // Asegúrate de reemplazar 'tabbedPane' con el nombre real de tu JTabbedPane        
@@ -61,7 +62,7 @@ public void setLabelText(JLabel label, String text) {
         imagen.setIcon(null);
         imagen.setHorizontalAlignment(JLabel.CENTER); // Centra el icono horizontalmente
         imagen.setVerticalAlignment(JLabel.CENTER);
-        String rutaBase = "src\\main\\java\\Imagen\\";
+        String rutaBase = "/Imagenes/";
         String rutaImagen = "";
         switch (tipo.toLowerCase()) {
             case "cama":
@@ -97,16 +98,17 @@ public void setLabelText(JLabel label, String text) {
         }
         // Ajustar el tamaño de la imagen y configurar el icono del JLabel
         try {
-            ImageIcon icon = new ImageIcon(rutaImagen);
-            if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-                Image image = icon.getImage().getScaledInstance(110, 140, Image.SCALE_SMOOTH); // Escalar imagen
-                imagen.setIcon(new ImageIcon(image)); // Establecer imagen escalada como icono
-            } else {
-                System.out.println("La imagen no se encontró.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        ImageIcon icon = new ImageIcon(getClass().getResource(rutaImagen));
+        if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
+            Image image = icon.getImage().getScaledInstance(imagen.getWidth(), imagen.getHeight(), Image.SCALE_SMOOTH); // Escalar imagen al tamaño del JLabel
+            imagen.setIcon(new ImageIcon(image)); // Establecer imagen escalada como icono
+        } else {
+            System.out.println("La imagen no se encontró.");
         }
+    } catch (Exception e) {
+        System.out.println("Error al cargar la imagen: " + e.getMessage());
+        e.printStackTrace();
+    }
     }
     public void LLenarPanles(){
     setLabelText(this.lblDescripciontxt, ListaMue.get(0).getDescripcion());
@@ -1905,16 +1907,16 @@ public void setLabelText(JLabel label, String text) {
         });
     }
     private void pintarImagen(JLabel lbl, String ruta){
-        this.imagen = new ImageIcon(ruta);
-        this.icono = new ImageIcon(
-                this.imagen.getImage().getScaledInstance(
-                        lbl.getWidth(),
-                        lbl.getHeight(),
-                        Image.SCALE_DEFAULT
-                )
-        ); 
-        lbl.setIcon(this.icono);
-        this.repaint();
+        URL imageUrl = getClass().getResource(ruta); // Carga desde el classpath
+        if (imageUrl != null) {
+            ImageIcon imagenS = new ImageIcon(imageUrl);
+            ImageIcon iconoS = new ImageIcon(imagenS.getImage().getScaledInstance(
+               lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH
+            ));
+            lbl.setIcon(iconoS);
+        } else {
+        System.out.println("Imagen no encontrada: " + ruta);
+        }
     }
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
